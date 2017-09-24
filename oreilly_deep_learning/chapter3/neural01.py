@@ -23,8 +23,22 @@ def init_network():
 
 
 def predict(network, x):
+    """
+    入力層を784個(28*28=784)
+    出力層を10個(数字0-9のクラス)
+
+    隠れ層1 50個のニューロン
+    隠れ層2 100のニューロン
+    """
     W1, W2, W3 = network['W1'], network['W2'], network['W3']
     b1, b2, b3 = network['b1'], network['b2'], network['b3']
+
+    # 配列の形状の推移を確認
+    # print(x.shape)  # (784,)
+    # print(W1.shape)  # (784, 50)
+    # print(W2.shape)  # (50, 100)
+    # print(W3.shape)  # (100, 10)
+    # exit(0)
 
     a1 = np.dot(x, W1) + b1
     z1 = sigmoid(a1)
@@ -36,7 +50,7 @@ def predict(network, x):
     return y
 
 
-x, t = get_data() # x_test(test_data), t_test(test_label)
+x, t = get_data()  # x_test(test_data), t_test(test_label)
 network = init_network()
 accuracy_cnt = 0
 # print(network)
