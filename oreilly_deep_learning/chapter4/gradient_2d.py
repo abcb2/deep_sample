@@ -67,4 +67,5 @@ if __name__ == "__main__":
     plt.grid()
     plt.legend()
     plt.draw()
-    plt.show()
+    # plt.show()
+    plt.savefig("chapter4/gradient.png")
