@@ -61,7 +61,7 @@ class TwoLayerNet:
         a1 = np.dot(x, W1) + b1
         z1 = sigmoid(a1)
         a2 = np.dot(z1, W2) + b2
-        y = softmax(a1)
+        y = softmax(a2)
 
         # backward
         dy = (y - t) / batch_num
@@ -86,5 +86,10 @@ if __name__ == "__main__":
     x = np.random.rand(100, 784)
     t = np.random.rand(100, 10)
     y = net.predict(x)
-    grads = net.numerical_gradient(x, t)
-    print(grads)
+    # grads = net.numerical_gradient(x, t)
+    grads = net.gradient(x, t)
+    print("RESULTS")
+    print(grads['W1'].shape)  # (784, 100)
+    print(grads['b1'].shape)  # (100, )
+    print(grads['W2'].shape)  # (100, 10)
+    print(grads['b2'].shape)  # (10, )
